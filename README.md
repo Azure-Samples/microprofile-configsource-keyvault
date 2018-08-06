@@ -98,9 +98,9 @@ That's it! We now have Key Vault running in Azure with a single secret. We can n
 
 This example is based on a sample application available on GitHub, so we will clone that and then step through the code. Follow the steps below to get the code cloned onto your machine:
 
-1. `git clone https://github.com/JonathanGiles/microprofile-on-azure.git`
+1. `git clone https://github.com/Azure-Samples/microprofile-configsource-keyvault.git`
 
-1. `cd keyvault-configsource`
+1. `cd microprofile-configsource-keyvault`
 
 1. Navigate to `src/main/resources/META-INF/microprofile-config.properties` and change the properties in microprofile-config.properties file with details from above.
 
