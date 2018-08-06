@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.microsoft.azure.microprofile.config.keyvault</groupId>
+    <artifactId>keyvault-configsource</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <name>keyvault-configsource</name>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <payaramicro.maven.plugin.version>1.0.1</payaramicro.maven.plugin.version>
+        <payaramicro.version>4.1.2.181</payaramicro.version>
+        <output.war>keyvault-configsource</output.war>
+    </properties>
+
+    <dependencies>
+        <!-- Bring in Java EE API (Web profile) -->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.microsoft.sandbox.microprofile.config.keyvault</groupId>
+            <artifactId>keyvault-config-source</artifactId>
+            <version>0.0.3</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${output.war}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>fish.payara.maven.plugins</groupId>
+                <artifactId>payara-micro-maven-plugin</artifactId>
+                <version>${payaramicro.maven.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <payaraVersion>${payaramicro.version}</payaraVersion>
+                    <commandLineOptions>
+                        <option>
+                            <key>--deploy</key>
+                            <value>${project.build.directory}/${project.build.finalName}</value>
+                        </option>
+                    </commandLineOptions>
+                    <deployWar>true</deployWar>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
